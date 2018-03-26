@@ -7,8 +7,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3000;
 const app = express();
-// TODO: Don't forget your conString!!!
-const conString = '';
+// DONE: Don't forget your conString!!!
+const conString = 'postgres://localhost:5432';
 const client = new pg.Client(conString);
 client.connect();
 client.on('error', err => {
@@ -94,8 +94,8 @@ app.put('/articles/:id', (request, response) => {
 
 app.delete('/articles/:id', (request, response) => {
   client.query(
-      `DELETE FROM articles WHERE article_id=$1;`, [request.params.id]
-    )
+    `DELETE FROM articles WHERE article_id=$1;`, [request.params.id]
+  )
     .then(() => response.send('Delete complete'))
     .catch(console.error);
 });
@@ -117,8 +117,8 @@ function loadAuthors() {
   fs.readFile('./public/data/hackerIpsum.json', 'utf8', (err, fd) => {
     JSON.parse(fd).forEach(ele => {
       client.query(
-          'INSERT INTO authors(author, "authorUrl") VALUES($1, $2) ON CONFLICT DO NOTHING', [ele.author, ele.authorUrl]
-        )
+        'INSERT INTO authors(author, "authorUrl") VALUES($1, $2) ON CONFLICT DO NOTHING', [ele.author, ele.authorUrl]
+      )
         .catch(console.error);
     })
   })
