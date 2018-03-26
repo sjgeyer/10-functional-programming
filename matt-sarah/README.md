@@ -1,55 +1,24 @@
 ## User Stories and Feature Tasks
 
-*As a user, I want an admin page so I can easily view the stats of my blog app.*
-
-- Set up a template for each row of the Author Stats section.
-- Call the Handlebars `.compile()` method when initializing the admin page. Make sure to assign the result of this method to the same variable name that is used when the author stats are appended to the DOM.
-- For both index.html and admin.html, we'll want access to the `Article.all` data, but we'll have different view functions to set up for each of those pages. Complete the `Article.fetchAll()` method so that it invokes a specific callback after all articles are loaded.  
-
-*As a developer, I want to utilize IIFEs so that all of my function calls are executed on page load.*
-
-- Make sure each one of your scripts are properly enclosed. With the exception of `use strict;` and `var app = app || {};`, wrap the contents of article.js and articleView.js in an IIFE and give the IIFE a parameter called 'module'.
-- Where the IIFE is invoked, pass in the new 'app' object as an argument to the IIFEs and be sure to remember to export the `Article` and `articleView` objects. Keep in mind that this will change how we refer to those two objects throughout the app.
-  - Ensure both the index page and the admin page call `Article.fetchAll()` in a way that properly triggers the appropriate page setup methods.
-
-*As a developer, I want to utilize functional programming so that my code makes sense and follows modern practices.*
-
-- In the `loadAll()` method, refactor the old `forEach()` method to use `.map()` instead, since we are transforming one collection into another. Remember that we can set variables equal to the results of a function. So if we set a variable equal to the result of a `.map()`, it will be our transformed array. There is no need to push to anything.
-- Chain together a `.map()` call and a `.reduce()` call to get a rough count of all words in all articles.
-- Chain together a `.map()` call and a `.reduce()` call to produce an array of unique author names. You will probably need to use the optional accumulator argument in your reduce call.
-- Transform each author string into an object with properties for the author's name, as well as the total number of words across all articles written by the specified author.
-  - HINT: This `.map()` call should be set up to return an object literal with two properties. The first property should be pretty straightforward, but you will need to chain some combination of `.filter()`, `.map()`, and `.reduce()` to get the value for the second property.
-
-### Stretch Goal
-
-*As a user, I want additional stats so that I can track the progress of my app.*
-
-- What additional statistical analysis would be of interest to you with this data set? Code it up!
-
-## Documentation
-_Your README.md must include:_
-
-```md
-# Project Name
-
-**Author**: Your Name Goes Here
-**Version**: 1.0.0 (increment the patch/fix version number up if you make more commits past your first submission)
+**Author**: Sarah Geyer and Matt Harding
 
 ## Overview
-<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for a Code Fellows 301 class. (i.e. What's your problem domain?) -->
+Create an administrative page that shows the total word counts of the displayed articles, as well as word counts for each individual author.
 
 ## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+- Make a handlebar template for the author statistics
+- Populate the handlebar template with the generated statistics
 
 ## Architecture
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+HTML, JS, CSS, Handlebars, AJAX, jQuery, SQL, JSON, Express, Node, pg, fs, BodyParser
 
 ## Change Log
-<!-- Use this are to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
-
-01-01-2001 4:59pm - Application now has a fully-functional express server, with GET and POST routes for the book resource.
+03-26-18 9:15am - Completed reviewing the problem domain.
+03-26-18 9:45am - Enclosed article.js and articleView.js in IIFE statements.
+03-26-18 10:30am - Finished our .map and .reduce functions to count total words in the articles and create an array of unique author names.
+03-26-18 10:45am - Created function to tally word counts for each author.
+03-26-18 11:15am - Resolved a nasty article instantiation bug.
+03-26-18 11:45am - Used Sam's images to fix the bug in our author word count function.
 
 ## Credits and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
--->
-```
+Sam Hamm
