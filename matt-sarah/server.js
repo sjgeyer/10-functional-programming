@@ -1,5 +1,5 @@
 'use strict';
-// REVIEW: Check out all of our new arrow function syntax!
+// DONE: Check out all of our new arrow function syntax!
 
 const pg = require('pg');
 const fs = require('fs');

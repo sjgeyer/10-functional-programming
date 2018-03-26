@@ -121,12 +121,11 @@ var app = app || {};
 
     article.insertRecord();
 
-    // REVIEW: The following line of code redirects the user back to the home page after submitting the form.
+    // DONE: The following line of code redirects the user back to the home page after submitting the form.
     window.location = '../';
   }
 
   articleView.initIndexPage = () => {
-    console.log(app.Article.all);
     app.Article.all.forEach(a => $('#articles').append(a.toHtml()));
 
     articleView.populateFilters();
@@ -139,14 +138,14 @@ var app = app || {};
 
   articleView.initAdminPage = () => {
 
-    // TODO: Call the Handlebars .compile() method, which will return a function for you to use where needed.
+    // DONE: Call the Handlebars .compile() method, which will return a function for you to use where needed.
     // Make sure you assign the result of your Handlebars.compile call to a variable called "template", since we are then calling "template" below.
-    let template = Handlebars.compile('#stats-template').text();
+    let template = Handlebars.compile($('#stats-template').text());
 
-    // REVIEW: We use .forEach() here because we are relying on the side-effects of the callback function: appending to the DOM. The callback is not required to return anything.
+    // DONE: We use .forEach() here because we are relying on the side-effects of the callback function: appending to the DOM. The callback is not required to return anything.
     app.Article.numWordsByAuthor().forEach(stat => $('.author-stats').append(template(stat)));
 
-    // REVIEW: Simply write the correct values to the page:
+    // DONE: Simply write the correct values to the page:
     $('#blog-stats .articles').text(app.Article.all.length);
     $('#blog-stats .words').text(app.Article.numWordsAll());
   };
